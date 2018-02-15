@@ -140,7 +140,7 @@ const createCounterComponents = () => {
         return (
             <App
                 addbutton={() => {
-                    store.dispatch(actionAddCounter())
+                    store.dispatch(actionAddCounter(i))
                 }}
                 count={c.count}
                 increment={() => {
@@ -166,7 +166,10 @@ store.subscribe(() => {
     console.log(`You changed the state `);
     ReactDOM.render(
         <div>
-
+        <button className="add-counter-button" onClick={ () => {
+            store.dispatch(actionAddCounter())
+        } }> Add Counter
+        </button>
             {createCounterComponents()}
         </div>
        , document.getElementById('root'));
